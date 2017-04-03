@@ -147,7 +147,7 @@ set sts=0
 set noet
 
 " Whitespace highlighting
-set listchars=tab:→\ 
+set listchars=tab:➝\ 
 set listchars+=trail:∙
 set list
 
@@ -201,10 +201,6 @@ let g:airline_theme = 'badwolf'
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
-
-
-" indentline
-let g:indentLine_enabled = 0
 
 
 " youcompleteme
