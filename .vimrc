@@ -37,6 +37,7 @@ set shortmess+=I
 " normal OS clipboard interaction
 set clipboard=unnamed
 
+
 """""""""""""""""""
 " VIM UI
 """""""""""""""""""
@@ -110,6 +111,7 @@ set foldcolumn=1
 set visualbell
 set noerrorbells
 
+
 """""""""""""""""""
 " COLOR/FONT
 """""""""""""""""""
@@ -128,6 +130,7 @@ set background=dark
 set t_Co=256
 set encoding=utf8
 
+
 """""""""""""""""""
 " TEXT
 """""""""""""""""""
@@ -143,10 +146,11 @@ set sw=4
 set sts=0
 set noet
 
-" whitespace highlighting
+" Whitespace highlighting
 set listchars=tab:→\ 
-set listchars+=trail:·
+set listchars+=trail:∙
 set list
+
 
 """""""""""""""""""
 " NAVIGATION
@@ -165,6 +169,7 @@ nnoremap <S-Tab> :bprevious<CR>
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+
 """""""""""""""""""
 " STATUS LINE
 """""""""""""""""""
@@ -172,6 +177,7 @@ set laststatus=2
 
 " Status line format
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
 
 """""""""""""""""""
 " MAPPINGS
@@ -188,6 +194,7 @@ map 0 ^
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
 
 
 " cpp-enhanced-highlight
