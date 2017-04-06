@@ -1,3 +1,5 @@
+" Frankenstein .vimrc from various sources
+
 
 " Use pathogen to easily modify the runtime path to include all plugins under
 " the ~/.vim/bundle directory
@@ -36,6 +38,9 @@ set shortmess+=I
 
 " normal OS clipboard interaction
 set clipboard=unnamed
+
+" set path to where ever vim was opened
+set path=$PWD/**
 
 
 """""""""""""""""""
@@ -111,6 +116,9 @@ set foldcolumn=1
 set visualbell
 set noerrorbells
 
+" highlight cursor row
+set cursorline
+
 
 """""""""""""""""""
 " COLOR/FONT
@@ -148,6 +156,7 @@ set noet
 
 " Whitespace highlighting
 set listchars=tab:➝\ 
+"set listchars=tab:¦\ 
 set listchars+=trail:∙
 set list
 
