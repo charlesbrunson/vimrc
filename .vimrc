@@ -124,8 +124,10 @@ set cursorline
 " COLOR/FONT
 """""""""""""""""""
 
-" Enable syntax highlighting
-syntax enable 
+set t_Co=256
+set encoding=utf8
+
+set background=dark
 
 try
     colorscheme badwolf
@@ -133,10 +135,8 @@ try
 catch
 endtry
 
-set background=dark
-
-set t_Co=256
-set encoding=utf8
+" Enable syntax highlighting
+syntax enable 
 
 
 """""""""""""""""""
@@ -177,6 +177,12 @@ nnoremap <S-Tab> :bprevious<CR>
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" execute makefile view result
+nmap <F5> :make<CR>
+
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
 
 
 """""""""""""""""""
