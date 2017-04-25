@@ -181,6 +181,14 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " execute makefile view result
 nmap <F5> :make<CR>
 
+" Error navigation
+nmap <C-left> :cp<CR>
+nmap <C-right> :cn<CR>
+
+" Open/close quickfix menu
+nmap <C-up> :cope<CR>
+nmap <C-down> :ccl<CR>
+
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
