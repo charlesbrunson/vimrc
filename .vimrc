@@ -181,9 +181,11 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " execute makefile view result
 nmap <F5> :make<CR>
 
-"This unsets the "last search pattern" register by hitting return
+" This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
+" create/focus on NERDTree
+map <silent> <C-w>n :NERDTreeFocus<CR>
 
 """""""""""""""""""
 " STATUS LINE
@@ -238,5 +240,6 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
             \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
-
-
+"changing tree root cahnges root for ctrl-p
+let g:NERDTreeChDirMode       = 2
+let g:ctrlp_working_path_mode = 'rw'
