@@ -102,7 +102,7 @@ set hlsearch
 set incsearch 
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+"set lazyredraw 
 
 " Show matching brackets when text indicator is over them
 set showmatch 
@@ -155,8 +155,9 @@ set sts=0
 set noet
 
 " Whitespace highlighting
-set listchars=tab:➝\ 
+"set listchars=tab:➝\ 
 "set listchars=tab:¦\ 
+set listchars=tab:\ \ 
 set listchars+=trail:∙
 set list
 
@@ -180,6 +181,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " execute makefile view result
 nmap <F5> :make<CR>
+" run run.sh
+nmap <F4> :!./run.sh<CR>
 
 " Error navigation
 nmap <C-left> :cp<CR>
@@ -209,8 +212,9 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""
 
 " Remap VIM 0 to first non-blank character
-map 0 ^
+"map 0 ^
 
+inoremap .. ->
 
 """""""""""""""""""
 " PLUGIN CONFIG
@@ -230,24 +234,40 @@ let g:cpp_experimental_simple_template_highlight = 1
 
 " youcompleteme
 let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_enable_diagnostic_highlighting = 1
 let g:ycm_always_populate_location_list = 1 "default 0
 let g:ycm_path_to_python_interpreter = '' "default ''
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'  "where to search for .ycm_extra_conf.py if not found
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'  "where to search for .ycm_extra_conf.py if not found
 let g:ycm_confirm_extra_conf = 1
+let g:ycm_extra_conf_globlist = ['~/Documents/game/game-project/*']
 let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
 let g:ycm_filetype_whitelist = { '*': 1 }
 let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_error_symbol = '!>'
+let g:ycm_warning_symbol = '?>'
+nnoremap gt :YcmCompleter GoTo<CR>
+nnoremap gy :YcmCompleter GetType<CR>
 
 " NERDTree
 " Show hidden files, too
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
-let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-            \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
+"let NERDTreeShowFiles=1
+"let NERDTreeShowHidden=1
+"let NERDTreeQuitOnOpen=1
+"let NERDTreeHighlightCursorline=1
+"let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
+"            \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
-"changing tree root cahnges root for ctrl-p
-let g:NERDTreeChDirMode       = 2
-let g:ctrlp_working_path_mode = 'rw'
+" vim-gitgutter
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gutter_sign_modified_removed = '~-'
+let g:gitgutter_map_keys = 0
+
+if exists('&signcolumn')  " Vim 7.4.2201
+	set signcolumn=yes
+else
+	let g:gitgutter_sign_column_always = 1
+endif
+
+command GGP :GitGutterPreview
