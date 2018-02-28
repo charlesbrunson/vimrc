@@ -14,6 +14,8 @@ syntax on
 " General
 """""""""""""""""""
 
+let mapleader = "\<Space>"
+
 " Always show what mode we're currently editing in
 set showmode
 
@@ -119,6 +121,7 @@ set noerrorbells
 " highlight cursor row
 set cursorline
 
+set showcmd
 
 """""""""""""""""""
 " COLOR/FONT
@@ -195,9 +198,6 @@ nmap <C-down> :ccl<CR>
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
-" create/focus on NERDTree
-map <silent> <C-w>n :NERDTreeFocus<CR>
-
 """""""""""""""""""
 " STATUS LINE
 """""""""""""""""""
@@ -214,7 +214,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 "map 0 ^
 
-inoremap .. ->
+inoremap -- ->
 
 """""""""""""""""""
 " PLUGIN CONFIG
@@ -239,14 +239,14 @@ let g:ycm_always_populate_location_list = 1 "default 0
 let g:ycm_path_to_python_interpreter = '' "default ''
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'  "where to search for .ycm_extra_conf.py if not found
 let g:ycm_confirm_extra_conf = 1
-let g:ycm_extra_conf_globlist = ['~/Documents/game/game-project/*']
+let g:ycm_extra_conf_globlist = ['~/game-project/*']
 let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
 let g:ycm_filetype_whitelist = { '*': 1 }
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_error_symbol = '!>'
 let g:ycm_warning_symbol = '?>'
-nnoremap gt :YcmCompleter GoTo<CR>
-nnoremap gy :YcmCompleter GetType<CR>
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>gy :YcmCompleter GetType<CR>
 
 " NERDTree
 " Show hidden files, too
@@ -271,3 +271,7 @@ else
 endif
 
 command GGP :GitGutterPreview
+
+" ctrlp
+let g:ctrlp_map = '<leader><Space>'
+
