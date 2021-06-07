@@ -132,9 +132,14 @@ set encoding=utf8
 
 set background=dark
 
+"try
+"    colorscheme badwolf
+"    let g:badwolf_darkgutter=0
+"catch
+"endtry
 try
-    colorscheme badwolf
-    let g:badwolf_darkgutter=1
+    colorscheme codedark
+    let g:codedark_conservative=0
 catch
 endtry
 
@@ -223,7 +228,8 @@ inoremap -- ->
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+"let g:airline_theme = 'badwolf'
+let g:airline_theme = 'codedark'
 
 
 " cpp-enhanced-highlight
@@ -243,8 +249,12 @@ let g:ycm_extra_conf_globlist = ['~/game-project/*']
 let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
 let g:ycm_filetype_whitelist = { '*': 1 }
 let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_error_symbol = '!>'
-let g:ycm_warning_symbol = '?>'
+let g:ycm_error_symbol = '!'
+let g:ycm_warning_symbol = '?'
+hi YcmErrorSign ctermfg=9 ctermbg=none cterm=bold
+hi YcmWarningSign ctermfg=226 ctermbg=none cterm=bold
+"hi YcmErrorLine ctermfg=9 ctermbg=none cterm=bold
+"hi YcmWarningLine ctermfg=226 ctermbg=none cterm=bold
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>gy :YcmCompleter GetType<CR>
 
@@ -267,11 +277,17 @@ let g:gitgutter_map_keys = 0
 if exists('&signcolumn')  " Vim 7.4.2201
 	set signcolumn=yes
 else
-	let g:gitgutter_sign_column_always = 1
+	let g:gitgutter_sign_column_always = 0
 endif
 
 command GGP :GitGutterPreview
 
 " ctrlp
 let g:ctrlp_map = '<leader><Space>'
+let g:ctrlp_open_multiple_files = 'ij'
+let g:ctrlp_open_new_file = 'r'
+
+" Fugitive
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
 
